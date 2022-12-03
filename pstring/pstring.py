@@ -29,6 +29,31 @@ class PString:
     def __add__(self, other):
         return PString(self.string + other.string)
 
+    @staticmethod
+    def available_styles():
+        """Print all available styles
+
+        Returns
+        -------
+        list
+            a list of available styles (method names)
+        """
+
+        styles = [func for func in dir(PString)
+                  if callable(getattr(PString, func))
+                  and not func.startswith("__")
+                  and not func == "available_styles"
+                  and not func == "print"]
+
+        PString("Available styles:").bold().g().underline().print()
+        for style in styles:
+            style_desc = getattr(PString, style).__doc__.replace("Make string ", "")
+            style_desc_with_style = getattr(PString, style)(PString(style_desc))
+
+            print(PString(f"{style+'()':<15}").bold(), style_desc_with_style)
+
+        return styles
+
     def print(self, **kwargs):
         """Print string"""
         print(self.string, **kwargs)
@@ -97,7 +122,3 @@ class PString:
         """Make string underlined"""
         self.string = "\033[4m" + self.string
         return self
-
-
-
-

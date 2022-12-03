@@ -1,4 +1,21 @@
+"""This module provides a class for handling strings: add color, bold, etc."""
+
+
 class PString:
+    """A class for adding styles to string.
+
+    Parameters
+    ----------
+    first_arg : str
+    *args : str
+        if more than one argument is given, they are joined together by a space
+
+    Attributes
+    ----------
+    string : str
+        the string with styles added
+    """
+
     def __init__(self, first_arg, *args):
         self.string = str(first_arg)
         for arg in args:

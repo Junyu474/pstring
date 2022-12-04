@@ -12,3 +12,14 @@ ps('Hello World').r().bg_g().bold().underline()
 # in any order
 ps('Hello World').bold().underline().r().bg_g()
 ```
+
+## Installation
+
+```bash
+pip install pstring
+```
+
+## Available Styles
+
+![avai_styles](https://user-images.githubusercontent.com/48139961/205517766-1cf55b46-541f-4dbf-9cb4-64a2f8885a4f.png)
+
